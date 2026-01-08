@@ -14,15 +14,19 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
   const paperConfig = PAPER_SIZES[pageFormat];
   const dimensions = getPaperDimensions(pageFormat);
   
-  // Calculate horizontal dimensions based on margins
-  const totalContentWidth = paperConfig.widthMm - LAYOUT.MARGIN_LEFT - LAYOUT.MARGIN_RIGHT;
+  // Use same margins and center gap for both formats
+  const marginLeft = LAYOUT.MARGIN_LEFT;
+  const marginRight = LAYOUT.MARGIN_RIGHT;
   const centerGap = LAYOUT.CENTER_GAP;
+  
+  // Calculate horizontal dimensions based on margins
+  const totalContentWidth = paperConfig.widthMm - marginLeft - marginRight;
   const columnWidth = (totalContentWidth - centerGap) / 2;
   
   const dateX = paperConfig.widthMm / 2; // Center of page
-  const leftContentX = LAYOUT.MARGIN_LEFT;
+  const leftContentX = marginLeft;
   const leftContentWidth = columnWidth;
-  const rightContentX = LAYOUT.MARGIN_LEFT + columnWidth + centerGap;
+  const rightContentX = marginLeft + columnWidth + centerGap;
   const rightContentWidth = columnWidth;
   
   // Calculate vertical dimensions based on margins

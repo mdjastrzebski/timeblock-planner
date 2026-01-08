@@ -16,10 +16,9 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = LAYOUT.DEFAULT_WIDTH }: Ti
         time: hour.toString().padStart(2, "0"),
         isFullHour: true,
       });
-      // Add half-hour slot after each hour except the last one
-      if (hour < hourTo) {
-        slots.push({ time: null, isFullHour: false });
-      }
+      // Add half-hour slot after each hour (including the last one)
+      // This ensures the last hour has a complete row for the second half
+      slots.push({ time: null, isFullHour: false });
     }
     return slots;
   }, [hourFrom, hourTo]);

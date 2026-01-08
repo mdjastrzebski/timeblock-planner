@@ -43,8 +43,8 @@ export const LAYOUT = {
   CONTENT_START_Y: 26, // Content area start Y position
   MARGIN_TOP: 10, // Top margin in mm
   MARGIN_BOTTOM: 10, // Bottom margin in mm
-  MARGIN_LEFT: 10, // Left margin in mm
-  MARGIN_RIGHT: 10, // Right margin in mm
+  MARGIN_LEFT: 10, // Left margin in mm (A4)
+  MARGIN_RIGHT: 10, // Right margin in mm (A4)
   DEFAULT_WIDTH: 128.5, // Default width for components in mm
   CENTER_GAP: 10, // Gap between left and right columns in mm
   DEFAULT_TASK_COUNT: 14, // Default number of task items

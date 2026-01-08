@@ -56,7 +56,9 @@
   }
 
   .svg-container svg {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
     display: block;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
