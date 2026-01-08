@@ -51,7 +51,7 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
         fill={COLORS.TEXT_SECONDARY}
         className="tracking-wider"
       >
-        __ / __ / 20__
+        _ _ / _ _ / 20 _ _
       </text>
       
       {/* Left side - TimeblockPlanner */}
