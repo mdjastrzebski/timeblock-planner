@@ -46,7 +46,12 @@ function App() {
         onTaskCountChange={handleTaskCountChange}
         onPrint={handlePrint}
       />
-      <Page hourFrom={hourFrom} hourTo={hourTo} pageFormat={pageFormat} taskCount={taskCount} />
+      <Page
+        hourFrom={hourFrom}
+        hourTo={hourTo}
+        pageFormat={pageFormat}
+        taskCount={taskCount}
+      />
     </>
   );
 }

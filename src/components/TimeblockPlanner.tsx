@@ -1,5 +1,11 @@
 import { useMemo } from "react";
-import { COLORS, STROKE_WIDTHS, FONTS, DASH_PATTERNS, LAYOUT } from "../constants/styles";
+import {
+  COLORS,
+  STROKE_WIDTHS,
+  FONTS,
+  DASH_PATTERNS,
+  LAYOUT,
+} from "../constants/styles";
 
 interface TimeblockPlannerProps {
   hourFrom: number;
@@ -7,7 +13,11 @@ interface TimeblockPlannerProps {
   width?: number;
 }
 
-const TimeblockPlanner = ({ hourFrom, hourTo, width = LAYOUT.DEFAULT_WIDTH }: TimeblockPlannerProps) => {
+const TimeblockPlanner = ({
+  hourFrom,
+  hourTo,
+  width = LAYOUT.DEFAULT_WIDTH,
+}: TimeblockPlannerProps) => {
   // Generate time slots from hourFrom to hourTo (full hours with half-hour rows)
   const timeSlots = useMemo(() => {
     const slots = [];
@@ -22,21 +32,21 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = LAYOUT.DEFAULT_WIDTH }: Ti
     }
     return slots;
   }, [hourFrom, hourTo]);
-  
+
   // Column measurements
   const timeColumnWidth = LAYOUT.TIME_COLUMN_WIDTH;
   const remainingWidth = width - timeColumnWidth;
   const columnWidth = remainingWidth / LAYOUT.COLUMNS;
-  
+
   // Calculate column X positions
   const column2X = timeColumnWidth;
   const column3X = timeColumnWidth + columnWidth;
   const column4X = timeColumnWidth + columnWidth * 2;
   const column5X = timeColumnWidth + columnWidth * 3;
-  
+
   const rowHeight = LAYOUT.ROW_HEIGHT;
   const totalHeight = timeSlots.length * rowHeight;
-  
+
   // Text positioning - centered vertically in row
   // Adjust slightly lower to account for font baseline
   const textYOffset = rowHeight / 2 + 0.3; // Slightly lower for better centering
@@ -53,17 +63,19 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = LAYOUT.DEFAULT_WIDTH }: Ti
         strokeWidth={STROKE_WIDTHS.SECONDARY}
         strokeDasharray={DASH_PATTERNS.DOTTED}
       />
-      
+
       {/* Draw rows and borders */}
       {timeSlots.map((slot, index) => {
         const y = index * rowHeight;
         const isLast = index === timeSlots.length - 1;
-        
+
         // Draw horizontal line (top border)
         const lineColor = slot.isFullHour ? COLORS.PRIMARY : COLORS.SECONDARY;
-        const lineWidth = slot.isFullHour ? STROKE_WIDTHS.PRIMARY : STROKE_WIDTHS.SECONDARY;
+        const lineWidth = slot.isFullHour
+          ? STROKE_WIDTHS.PRIMARY
+          : STROKE_WIDTHS.SECONDARY;
         const dashArray = slot.isFullHour ? undefined : DASH_PATTERNS.DOTTED;
-        
+
         return (
           <g key={index}>
             {/* Top border line */}
@@ -76,7 +88,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = LAYOUT.DEFAULT_WIDTH }: Ti
               strokeWidth={lineWidth}
               strokeDasharray={dashArray}
             />
-            
+
             {/* Bottom border for last row */}
             {isLast && (
               <line
@@ -88,7 +100,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = LAYOUT.DEFAULT_WIDTH }: Ti
                 strokeWidth={STROKE_WIDTHS.PRIMARY}
               />
             )}
-            
+
             {/* Time label */}
             {slot.time && (
               <text
@@ -104,7 +116,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = LAYOUT.DEFAULT_WIDTH }: Ti
                 {slot.time}
               </text>
             )}
-            
+
             {/* Vertical dividers between columns */}
             {[column2X, column3X, column4X, column5X].map((x, dividerIndex) => (
               <line

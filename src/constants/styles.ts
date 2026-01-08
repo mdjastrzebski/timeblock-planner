@@ -22,8 +22,8 @@ export const FONTS = {
   WEIGHT_MEDIUM: "500",
   DATE_TEXT_STYLE: {
     fontFamily: '"Inter", sans-serif',
-    fontVariant: 'normal' as const,
-    fontFeatureSettings: 'normal' as const,
+    fontVariant: "normal" as const,
+    fontFeatureSettings: "normal" as const,
   },
   DATE_FORMAT_PLACEHOLDER: "_ _ / _ _ / 20 _ _",
 } as const;
@@ -69,7 +69,7 @@ export const PAPER_SIZES = {
 // Helper function to get width/height strings with units
 export const getPaperDimensions = (format: keyof typeof PAPER_SIZES) => {
   const config = PAPER_SIZES[format];
-  
+
   return {
     width: `${config.widthMm}mm`,
     height: `${config.heightMm}mm`,

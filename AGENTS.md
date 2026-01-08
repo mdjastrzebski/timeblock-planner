@@ -47,3 +47,8 @@ The project is optimized for use with `bun`.
 - **Styling:** Tailwind CSS utility classes are used throughout components. Print styles use Tailwind's `print:` variant. Custom CSS is kept minimal (only for `@page` rules and base styles).
 - **Type Safety:** Strict TypeScript configuration is enabled.
 - **Print Logic:** The application relies heavily on browser native printing. Logic for `@page` size is dynamically injected in `App.tsx` to support multiple formats.
+
+## Agent Guidelines
+
+1. Run `bun run prettier:fix` after you finish changing code.
+2. Summarize the changes made in `CURRENT-CHANGES.md` file. Use a format of a brief PR description.

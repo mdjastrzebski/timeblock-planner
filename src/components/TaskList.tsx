@@ -6,7 +6,10 @@ interface TaskListProps {
   taskCount: number;
 }
 
-const TaskList = ({ width = LAYOUT.DEFAULT_WIDTH, taskCount }: TaskListProps) => {
+const TaskList = ({
+  width = LAYOUT.DEFAULT_WIDTH,
+  taskCount,
+}: TaskListProps) => {
   // Generate task list items
   const tasks = useMemo(() => {
     const taskArray = [];
@@ -15,7 +18,7 @@ const TaskList = ({ width = LAYOUT.DEFAULT_WIDTH, taskCount }: TaskListProps) =>
     }
     return taskArray;
   }, [taskCount]);
-  
+
   const checkboxSize = LAYOUT.CHECKBOX_SIZE;
   const checkboxX = 0;
   const taskLineStartX = 5; // Start line after checkbox (3mm + 2mm gap)
@@ -35,14 +38,14 @@ const TaskList = ({ width = LAYOUT.DEFAULT_WIDTH, taskCount }: TaskListProps) =>
         stroke={COLORS.DIVIDER}
         strokeWidth={STROKE_WIDTHS.PRIMARY}
       />
-      
+
       {/* Task items */}
       {tasks.map((taskNum, index) => {
-        const lineY = firstTaskY + (index * spacing);
+        const lineY = firstTaskY + index * spacing;
         // Position checkbox between lines: centered in the gap between previous line and current line
         // Move checkbox up by one spacing unit to position it correctly
-        const checkboxY = lineY - (spacing / 2) - (checkboxSize / 2);
-        
+        const checkboxY = lineY - spacing / 2 - checkboxSize / 2;
+
         return (
           <g key={taskNum}>
             {/* Task line */}
@@ -54,7 +57,7 @@ const TaskList = ({ width = LAYOUT.DEFAULT_WIDTH, taskCount }: TaskListProps) =>
               stroke={COLORS.DIVIDER}
               strokeWidth={STROKE_WIDTHS.PRIMARY}
             />
-            
+
             {/* Checkbox - positioned between lines */}
             <rect
               x={checkboxX}
