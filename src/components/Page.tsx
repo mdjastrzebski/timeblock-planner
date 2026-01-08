@@ -1,8 +1,8 @@
-import './Page.css';
-import TimeblockPlanner from './TimeblockPlanner';
-import TaskList from './TaskList';
+import "./Page.css";
+import TimeblockPlanner from "./TimeblockPlanner";
+import TaskList from "./TaskList";
 
-type PageFormat = 'A4' | 'Letter';
+type PageFormat = "A4" | "Letter";
 
 interface PageProps {
   hourFrom: number;

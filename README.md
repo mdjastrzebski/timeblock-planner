@@ -26,17 +26,20 @@ A minimalist, customizable daily timeblock planner designed specifically for phy
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/timeblock-planner-print.git
    cd timeblock-planner-print
    ```
 
 2. Install dependencies:
+
    ```bash
    bun install
    ```
 
 3. Start the development server:
+
    ```bash
    bun dev
    ```

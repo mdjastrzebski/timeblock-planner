@@ -5,6 +5,7 @@
 This is a React application built with TypeScript and Vite, designed to generate a printable timeblock planner. The application allows users to customize the planner's configuration (start/end hours, page format) and print it directly from the browser.
 
 ### Key Features
+
 - **Customizable Time Range:** Users can set the starting and ending hours for the daily planner.
 - **Page Formats:** Supports A4 and Letter page sizes with dynamic print styling.
 - **Print Optimization:** Uses specific CSS (`@page`, `@media print`) to ensure the layout is perfect for physical printing, hiding UI controls during the process.
@@ -26,16 +27,17 @@ This is a React application built with TypeScript and Vite, designed to generate
 The project is optimized for use with `bun`.
 
 ### Prerequisites
+
 - Bun installed on your machine.
 
 ### Commands
 
-| Command | Description |
-| :--- | :--- |
-| `bun dev` | Starts the development server with HMR. |
-| `bun run build` | Type-checks (`tsc`) and builds the production-ready assets using Vite. |
-| `bun run preview` | Previews the built production build locally. |
-| `bun run lint` | Runs ESLint to check for code quality issues. |
+| Command           | Description                                                            |
+| :---------------- | :--------------------------------------------------------------------- |
+| `bun dev`         | Starts the development server with HMR.                                |
+| `bun run build`   | Type-checks (`tsc`) and builds the production-ready assets using Vite. |
+| `bun run preview` | Previews the built production build locally.                           |
+| `bun run lint`    | Runs ESLint to check for code quality issues.                          |
 
 ## Development Conventions
 

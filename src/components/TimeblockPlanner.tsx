@@ -1,4 +1,4 @@
-import './TimeblockPlanner.css';
+import "./TimeblockPlanner.css";
 
 interface TimeblockPlannerProps {
   hourFrom: number;
@@ -10,7 +10,10 @@ const TimeblockPlanner = ({ hourFrom, hourTo }: TimeblockPlannerProps) => {
   const generateTimeSlots = () => {
     const slots = [];
     for (let hour = hourFrom; hour <= hourTo; hour++) {
-      slots.push({ time: `${hour.toString().padStart(2, '0')}:00`, isFullHour: true });
+      slots.push({
+        time: `${hour.toString().padStart(2, "0")}:00`,
+        isFullHour: true,
+      });
       if (hour <= hourTo) {
         slots.push({ time: null, isFullHour: false });
       }
@@ -26,13 +29,15 @@ const TimeblockPlanner = ({ hourFrom, hourTo }: TimeblockPlannerProps) => {
         {timeSlots.map((slot, index) => {
           const isLast = index === timeSlots.length - 1;
           const rowClass = slot.isFullHour
-            ? 'timeblock-row timeblock-row-full-hour'
-            : 'timeblock-row timeblock-row-half-hour';
-          const finalClass = isLast ? `${rowClass} timeblock-row-final` : rowClass;
-          
+            ? "timeblock-row timeblock-row-full-hour"
+            : "timeblock-row timeblock-row-half-hour";
+          const finalClass = isLast
+            ? `${rowClass} timeblock-row-final`
+            : rowClass;
+
           return (
             <tr key={index} className={finalClass}>
-              <td className="hour-column">{slot.time || ''}</td>
+              <td className="hour-column">{slot.time || ""}</td>
               <td className="timeblock-column"></td>
               <td className="timeblock-column"></td>
               <td className="timeblock-column"></td>
