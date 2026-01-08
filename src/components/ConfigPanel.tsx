@@ -5,9 +5,11 @@ interface ConfigPanelProps {
   hourFrom: number;
   hourTo: number;
   pageFormat: PageFormat;
+  taskCount: number;
   onHourFromChange: (value: number) => void;
   onHourToChange: (value: number) => void;
   onPageFormatChange: (value: PageFormat) => void;
+  onTaskCountChange: (value: number) => void;
   onPrint: () => void;
 }
 
@@ -15,9 +17,11 @@ const ConfigPanel = ({
   hourFrom,
   hourTo,
   pageFormat,
+  taskCount,
   onHourFromChange,
   onHourToChange,
   onPageFormatChange,
+  onTaskCountChange,
   onPrint,
 }: ConfigPanelProps) => {
   return (
@@ -73,6 +77,38 @@ const ConfigPanel = ({
                   onHourToChange(isNaN(value) ? 0 : value);
                 }}
                 aria-label="Ending hour for the planner (0-23)"
+                className="px-3 py-2 border border-gray-300 rounded-md bg-white text-base transition-all duration-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 hover:border-gray-400 w-[60px]"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                className="w-5 h-5 text-gray-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                />
+              </svg>
+              <label htmlFor="taskCount" className="text-sm font-semibold text-gray-700">
+                Tasks:
+              </label>
+              <input
+                id="taskCount"
+                type="number"
+                min="1"
+                max="100"
+                value={taskCount}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  onTaskCountChange(isNaN(value) ? 1 : value);
+                }}
+                aria-label="Number of tasks (1-100)"
                 className="px-3 py-2 border border-gray-300 rounded-md bg-white text-base transition-all duration-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 hover:border-gray-400 w-[60px]"
               />
             </div>

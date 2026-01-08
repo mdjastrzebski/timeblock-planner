@@ -3,17 +3,18 @@ import { COLORS, STROKE_WIDTHS, LAYOUT } from "../constants/styles";
 
 interface TaskListProps {
   width?: number;
+  taskCount: number;
 }
 
-const TaskList = ({ width = LAYOUT.DEFAULT_WIDTH }: TaskListProps) => {
+const TaskList = ({ width = LAYOUT.DEFAULT_WIDTH, taskCount }: TaskListProps) => {
   // Generate task list items
   const tasks = useMemo(() => {
     const taskArray = [];
-    for (let i = 1; i <= LAYOUT.DEFAULT_TASK_COUNT; i++) {
+    for (let i = 1; i <= taskCount; i++) {
       taskArray.push(i);
     }
     return taskArray;
-  }, []);
+  }, [taskCount]);
   
   const checkboxSize = LAYOUT.CHECKBOX_SIZE;
   const checkboxX = 0;

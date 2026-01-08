@@ -8,6 +8,7 @@ function App() {
   const [hourFrom, setHourFrom] = useState(7);
   const [hourTo, setHourTo] = useState(20);
   const [pageFormat, setPageFormat] = useState<PageFormat>("A4");
+  const [taskCount, setTaskCount] = useState(16);
 
   const handlePrint = usePrint(pageFormat);
 
@@ -27,18 +28,25 @@ function App() {
     }
   };
 
+  const handleTaskCountChange = (value: number) => {
+    const newValue = Math.max(1, Math.min(100, value));
+    setTaskCount(newValue);
+  };
+
   return (
     <>
       <ConfigPanel
         hourFrom={hourFrom}
         hourTo={hourTo}
         pageFormat={pageFormat}
+        taskCount={taskCount}
         onHourFromChange={handleHourFromChange}
         onHourToChange={handleHourToChange}
         onPageFormatChange={setPageFormat}
+        onTaskCountChange={handleTaskCountChange}
         onPrint={handlePrint}
       />
-      <Page hourFrom={hourFrom} hourTo={hourTo} pageFormat={pageFormat} />
+      <Page hourFrom={hourFrom} hourTo={hourTo} pageFormat={pageFormat} taskCount={taskCount} />
     </>
   );
 }

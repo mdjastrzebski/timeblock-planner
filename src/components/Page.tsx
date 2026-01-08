@@ -7,9 +7,10 @@ interface PageProps {
   hourFrom: number;
   hourTo: number;
   pageFormat: PageFormat;
+  taskCount: number;
 }
 
-const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
+const Page = ({ hourFrom, hourTo, pageFormat, taskCount }: PageProps) => {
   // Get paper size configuration
   const paperConfig = PAPER_SIZES[pageFormat];
   const dimensions = getPaperDimensions(pageFormat);
@@ -66,7 +67,7 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
       
       {/* Right side - TaskList */}
       <g transform={`translate(${rightContentX}, ${contentStartY})`}>
-        <TaskList width={rightContentWidth} />
+        <TaskList width={rightContentWidth} taskCount={taskCount} />
       </g>
     </svg>
     </div>
