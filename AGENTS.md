@@ -8,7 +8,7 @@ This is a React application built with TypeScript and Vite, designed to generate
 
 - **Customizable Time Range:** Users can set the starting and ending hours for the daily planner.
 - **Page Formats:** Supports A4 and Letter page sizes with dynamic print styling.
-- **Print Optimization:** Uses specific CSS (`@page`, `@media print`) to ensure the layout is perfect for physical printing, hiding UI controls during the process.
+- **Print Optimization:** Uses Tailwind CSS with `print:` variant and browser-specific `@page` rules to ensure the layout is perfect for physical printing, hiding UI controls during the process.
 
 ## Architecture
 
@@ -19,8 +19,10 @@ This is a React application built with TypeScript and Vite, designed to generate
   - `src/components/TimeblockPlanner.tsx`: Renders the time grid/table based on the selected hours.
   - `src/components/TaskList.tsx`: (Inferred) Renders the task list section of the planner.
 - **Styling:**
-  - `src/styles/print.css`: Contains critical print-specific styles, including page dimensions, margins, and visibility toggles.
-  - Component-specific CSS files (e.g., `TimeblockPlanner.css`, `Page.css`).
+  - Uses Tailwind CSS for all component styling with utility classes.
+  - `src/styles/print.css`: Contains only browser-specific `@page` rules (cannot be converted to Tailwind).
+  - `src/index.css`: Contains Tailwind directives and custom base styles.
+  - Print-specific styles use Tailwind's `print:` variant prefix.
 
 ## Building and Running
 
@@ -41,7 +43,7 @@ The project is optimized for use with `bun`.
 
 ## Development Conventions
 
-- **Tech Stack:** React 19, TypeScript, Vite.
-- **Styling:** Standard CSS imported directly into components or global styles.
+- **Tech Stack:** React 19, TypeScript, Vite, Tailwind CSS.
+- **Styling:** Tailwind CSS utility classes are used throughout components. Print styles use Tailwind's `print:` variant. Custom CSS is kept minimal (only for `@page` rules and base styles).
 - **Type Safety:** Strict TypeScript configuration is enabled.
 - **Print Logic:** The application relies heavily on browser native printing. Logic for `@page` size is dynamically injected in `App.tsx` to support multiple formats.
