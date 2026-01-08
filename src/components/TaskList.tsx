@@ -1,4 +1,8 @@
-const TaskList = () => {
+interface TaskListProps {
+  width?: number;
+}
+
+const TaskList = ({ width = 128.5 }: TaskListProps) => {
   // Generate task list items
   const generateTasks = () => {
     const tasks = [];
@@ -9,19 +13,60 @@ const TaskList = () => {
   };
 
   const tasks = generateTasks();
+  
+  const checkboxSize = 3; // 3mm x 3mm
+  const checkboxX = 0;
+  const taskLineStartX = 5; // Start line after checkbox (3mm + 2mm gap)
+  const taskLineEndX = width;
+  const spacing = 4.5; // 4.5mm between tasks
+  const topBorderY = 0;
+  const firstTaskY = topBorderY + spacing; // Start first task after top border + spacing
+  
+  const totalHeight = firstTaskY + (tasks.length * spacing);
 
   return (
-    <div className="flex flex-col h-full m-0 p-0 pt-[2mm] print:overflow-visible print:min-h-0">
-      <div className="w-full h-0 border-b border-gray-300 mb-[4.5mm] -mt-[2mm]"></div>
-      <div className="flex flex-col gap-[4.5mm] flex-1 print:overflow-visible print:min-h-0">
-        {tasks.map((taskNum) => (
-          <div key={taskNum} className="flex items-center gap-2 min-h-5 mb-0">
-            <div className="w-3 h-3 border border-black flex-shrink-0 m-0 bg-white relative -mt-[4mm] print:mt-0 print:-top-[2mm]"></div>
-            <div className="flex-1 h-5 border-b border-gray-300"></div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <g>
+      {/* Top border line */}
+      <line
+        x1="0"
+        y1={topBorderY}
+        x2={width}
+        y2={topBorderY}
+        stroke="#d1d5db"
+        strokeWidth="0.3"
+      />
+      
+      {/* Task items */}
+      {tasks.map((taskNum, index) => {
+        const y = firstTaskY + (index * spacing);
+        const checkboxY = y - (checkboxSize / 2); // Center checkbox vertically on line
+        
+        return (
+          <g key={taskNum}>
+            {/* Checkbox */}
+            <rect
+              x={checkboxX}
+              y={checkboxY}
+              width={checkboxSize}
+              height={checkboxSize}
+              stroke="black"
+              strokeWidth="0.3"
+              fill="white"
+            />
+            
+            {/* Task line */}
+            <line
+              x1={taskLineStartX}
+              y1={y}
+              x2={taskLineEndX}
+              y2={y}
+              stroke="#d1d5db"
+              strokeWidth="0.3"
+            />
+          </g>
+        );
+      })}
+    </g>
   );
 };
 

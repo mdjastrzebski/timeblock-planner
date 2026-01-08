@@ -10,20 +10,55 @@ interface PageProps {
 }
 
 const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
-  const pageSizeClass = pageFormat === "A4" ? "w-[297mm] h-[210mm]" : "w-[11in] h-[8.5in]";
+  // Calculate dimensions based on page format
+  const isA4 = pageFormat === "A4";
+  const width = isA4 ? "297mm" : "11in";
+  const height = isA4 ? "210mm" : "8.5in";
+  const viewBox = isA4 ? "0 0 297 210" : "0 0 279.4 215.9";
+  
+  // Calculate content area dimensions
+  // Left side (TimeblockPlanner): x from 10mm to ~148.5mm (half of 297mm)
+  // Right side (TaskList): x from ~148.5mm to 287mm (297mm - 10mm margin)
+  const contentStartY = 16; // 8mm margin + ~8mm for date height
+  const leftContentX = 10;
+  const leftContentWidth = isA4 ? 128.5 : 129.7; // Half width minus margins
+  const rightContentX = isA4 ? 148.5 : 149.7;
+  const rightContentWidth = isA4 ? 128.5 : 129.7;
+  
   return (
-    <div className={`m-0 mx-auto bg-white box-border flex flex-col print:m-0 print:p-0 print:[page-break-after:always] print:[page-break-inside:avoid] print:overflow-hidden ${pageSizeClass}`} data-page-format={pageFormat}>
-      <div className="flex items-center justify-center py-[8mm] px-[10mm] pb-[4mm] box-border flex-shrink-0">
-        <div className="w-[60mm] h-5 text-center text-sm text-gray-600 pb-0.5 tracking-wider font-mono">__ / __ / 20__</div>
-      </div>
-      <div className="flex w-full flex-1 overflow-hidden min-h-0">
-        <div className="w-1/2 p-[8mm] pb-[8mm] box-border flex flex-col overflow-hidden min-h-0">
-          <TimeblockPlanner hourFrom={hourFrom} hourTo={hourTo} />
-        </div>
-        <div className="w-1/2 p-[8mm] pb-[8mm] box-border flex flex-col overflow-hidden min-h-0">
-          <TaskList />
-        </div>
-      </div>
+    <div className="svg-container m-0 mx-auto print:m-0 print:p-0">
+      <svg
+        width={width}
+        height={height}
+        viewBox={viewBox}
+        xmlns="http://www.w3.org/2000/svg"
+        className="bg-white print:[page-break-after:always] print:[page-break-inside:avoid] print:overflow-hidden"
+        data-page-format={pageFormat}
+        preserveAspectRatio="xMidYMid meet"
+      >
+      {/* Date field - centered horizontally, y=12mm */}
+      <text
+        x={isA4 ? "148.5" : "139.7"}
+        y="12"
+        textAnchor="middle"
+        fontSize="3.7"
+        fontFamily="monospace"
+        fill="#6b7280"
+        className="tracking-wider"
+      >
+        __ / __ / 20__
+      </text>
+      
+      {/* Left side - TimeblockPlanner */}
+      <g transform={`translate(${leftContentX}, ${contentStartY})`}>
+        <TimeblockPlanner hourFrom={hourFrom} hourTo={hourTo} width={leftContentWidth} />
+      </g>
+      
+      {/* Right side - TaskList */}
+      <g transform={`translate(${rightContentX}, ${contentStartY})`}>
+        <TaskList width={rightContentWidth} />
+      </g>
+    </svg>
     </div>
   );
 };

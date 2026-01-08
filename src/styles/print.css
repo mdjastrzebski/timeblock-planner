@@ -19,4 +19,11 @@
     padding: 0;
     background: white;
   }
+
+  /* Ensure SVG prints at exact size */
+  svg {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    overflow: visible;
+  }
 }

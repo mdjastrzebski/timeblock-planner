@@ -45,4 +45,34 @@
     outline: 2px solid #646cff;
     outline-offset: 2px;
   }
+
+  /* SVG container for screen preview - constrains SVG size */
+  .svg-container {
+    max-width: min(90vw, 1200px);
+    max-height: min(90vh, 800px);
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+  }
+
+  .svg-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+}
+
+@media print {
+  /* Remove container constraints for print */
+  .svg-container {
+    max-width: none;
+    max-height: none;
+    margin: 0;
+  }
+
+  .svg-container svg {
+    width: auto;
+    height: auto;
+  }
 }
