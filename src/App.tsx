@@ -4,8 +4,8 @@ import Page from './components/Page'
 type PageFormat = 'A4' | 'Letter';
 
 function App() {
-  const [hourFrom, setHourFrom] = useState(8)
-  const [hourTo, setHourTo] = useState(18)
+  const [hourFrom, setHourFrom] = useState(7)
+  const [hourTo, setHourTo] = useState(20)
   const [pageFormat, setPageFormat] = useState<PageFormat>('A4')
 
   const handlePrint = () => {
