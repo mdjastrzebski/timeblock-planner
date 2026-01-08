@@ -1,11 +1,19 @@
 .page {
-  width: 297mm;
-  height: 210mm;
   margin: 0 auto;
   background: white;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+
+.page-a4 {
+  width: 297mm;
+  height: 210mm;
+}
+
+.page-letter {
+  width: 11in;
+  height: 8.5in;
 }
 
 .page-date-header {

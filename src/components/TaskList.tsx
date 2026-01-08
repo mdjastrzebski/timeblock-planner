@@ -14,6 +14,7 @@ const TaskList = () => {
 
   return (
     <div className="tasks-container">
+      <div className="task-line-top"></div>
       <div className="tasks-list">
         {tasks.map((taskNum) => (
           <div key={taskNum} className="task-item">

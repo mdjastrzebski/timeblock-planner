@@ -3,6 +3,11 @@
   margin: 0;
 }
 
+@page :first {
+  size: A4 landscape;
+  margin: 0;
+}
+
 @media print {
   * {
     -webkit-print-color-adjust: exact;
@@ -21,8 +26,6 @@
   }
 
   .page {
-    width: 297mm;
-    height: 210mm;
     margin: 0;
     padding: 0;
     page-break-after: always;
@@ -30,6 +33,16 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+  }
+
+  .page-a4 {
+    width: 297mm;
+    height: 210mm;
+  }
+
+  .page-letter {
+    width: 11in;
+    height: 8.5in;
   }
 
   .page-date-header {
@@ -87,7 +100,8 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    padding-top: 2mm;
+    overflow: visible;
     min-height: 0;
   }
 
@@ -106,9 +120,9 @@
   .tasks-list {
     display: flex;
     flex-direction: column;
-    gap: 8mm;
+    gap: 6mm;
     flex: 1;
-    overflow: hidden;
+    overflow: visible;
     min-height: 0;
   }
 
@@ -117,6 +131,7 @@
     align-items: flex-end;
     gap: 8px;
     min-height: 20px;
+    margin-bottom: 0;
   }
 
   .task-checkbox {
@@ -127,7 +142,14 @@
     margin: 0;
     background: white;
     position: relative;
-    bottom: 4mm;
+    bottom: 2mm;
+  }
+
+  .task-line-top {
+    width: 100%;
+    height: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 6mm;
   }
 
   .task-line {
