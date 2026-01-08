@@ -1,3 +1,5 @@
+import { COLORS, STROKE_WIDTHS, FONTS, DASH_PATTERNS, LAYOUT } from "../constants/styles";
+
 interface TimeblockPlannerProps {
   hourFrom: number;
   hourTo: number;
@@ -23,7 +25,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
   const timeSlots = generateTimeSlots();
   
   // Column measurements
-  const timeColumnWidth = 10; // Even narrower time column
+  const timeColumnWidth = LAYOUT.TIME_COLUMN_WIDTH;
   const remainingWidth = width - timeColumnWidth;
   const columnWidth = remainingWidth / 4; // 4 columns for timeblocks
   
@@ -33,10 +35,10 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
   const column4X = timeColumnWidth + columnWidth * 2;
   const column5X = timeColumnWidth + columnWidth * 3;
   
-  const rowHeight = 5; // 5mm per row
+  const rowHeight = LAYOUT.ROW_HEIGHT;
   const totalHeight = timeSlots.length * rowHeight;
   
-  // Text positioning - centered vertically in 5mm row
+  // Text positioning - centered vertically in row
   // Adjust slightly lower to account for font baseline
   const textYOffset = rowHeight / 2 + 0.3; // Slightly lower for better centering
 
@@ -48,9 +50,9 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
         y1={0}
         x2={width}
         y2={totalHeight}
-        stroke="#d1d5db"
-        strokeWidth="0.2"
-        strokeDasharray="0.5,0.5"
+        stroke={COLORS.DIVIDER}
+        strokeWidth={STROKE_WIDTHS.SECONDARY}
+        strokeDasharray={DASH_PATTERNS.DOTTED}
       />
       
       {/* Draw rows and borders */}
@@ -59,9 +61,9 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
         const isLast = index === timeSlots.length - 1;
         
         // Draw horizontal line (top border)
-        const lineColor = slot.isFullHour ? "black" : "#9ca3af";
-        const lineWidth = slot.isFullHour ? "0.3" : "0.2";
-        const dashArray = slot.isFullHour ? undefined : "0.5,0.5"; // Very dense dotted pattern for half-hour lines
+        const lineColor = slot.isFullHour ? COLORS.PRIMARY : COLORS.SECONDARY;
+        const lineWidth = slot.isFullHour ? STROKE_WIDTHS.PRIMARY : STROKE_WIDTHS.SECONDARY;
+        const dashArray = slot.isFullHour ? undefined : DASH_PATTERNS.DOTTED;
         
         return (
           <g key={index}>
@@ -83,8 +85,8 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
                 y1={y + rowHeight}
                 x2={width}
                 y2={y + rowHeight}
-                stroke="black"
-                strokeWidth="0.3"
+                stroke={COLORS.PRIMARY}
+                strokeWidth={STROKE_WIDTHS.PRIMARY}
               />
             )}
             
@@ -93,10 +95,10 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               <text
                 x={timeColumnWidth / 2}
                 y={y + textYOffset}
-                fontSize="2.9"
-                fontFamily="Inter, sans-serif"
-                fontWeight="500"
-                fill="black"
+                fontSize={FONTS.SIZE_TIME_LABEL}
+                fontFamily={FONTS.FAMILY}
+                fontWeight={FONTS.WEIGHT_MEDIUM}
+                fill={COLORS.PRIMARY}
                 dominantBaseline="middle"
                 textAnchor="middle"
               >
@@ -110,36 +112,36 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               y1={y}
               x2={column2X}
               y2={y + rowHeight}
-              stroke="#d1d5db"
-              strokeWidth="0.2"
-              strokeDasharray="0.5,0.5"
+              stroke={COLORS.DIVIDER}
+              strokeWidth={STROKE_WIDTHS.SECONDARY}
+              strokeDasharray={DASH_PATTERNS.DOTTED}
             />
             <line
               x1={column3X}
               y1={y}
               x2={column3X}
               y2={y + rowHeight}
-              stroke="#d1d5db"
-              strokeWidth="0.2"
-              strokeDasharray="0.5,0.5"
+              stroke={COLORS.DIVIDER}
+              strokeWidth={STROKE_WIDTHS.SECONDARY}
+              strokeDasharray={DASH_PATTERNS.DOTTED}
             />
             <line
               x1={column4X}
               y1={y}
               x2={column4X}
               y2={y + rowHeight}
-              stroke="#d1d5db"
-              strokeWidth="0.2"
-              strokeDasharray="0.5,0.5"
+              stroke={COLORS.DIVIDER}
+              strokeWidth={STROKE_WIDTHS.SECONDARY}
+              strokeDasharray={DASH_PATTERNS.DOTTED}
             />
             <line
               x1={column5X}
               y1={y}
               x2={column5X}
               y2={y + rowHeight}
-              stroke="#d1d5db"
-              strokeWidth="0.2"
-              strokeDasharray="0.5,0.5"
+              stroke={COLORS.DIVIDER}
+              strokeWidth={STROKE_WIDTHS.SECONDARY}
+              strokeDasharray={DASH_PATTERNS.DOTTED}
             />
           </g>
         );

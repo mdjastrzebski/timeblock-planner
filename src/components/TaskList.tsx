@@ -1,3 +1,5 @@
+import { COLORS, STROKE_WIDTHS, LAYOUT } from "../constants/styles";
+
 interface TaskListProps {
   width?: number;
 }
@@ -14,11 +16,11 @@ const TaskList = ({ width = 128.5 }: TaskListProps) => {
 
   const tasks = generateTasks();
   
-  const checkboxSize = 3; // 3mm x 3mm
+  const checkboxSize = LAYOUT.CHECKBOX_SIZE;
   const checkboxX = 0;
   const taskLineStartX = 5; // Start line after checkbox (3mm + 2mm gap)
   const taskLineEndX = width;
-  const spacing = 10; // 10mm between tasks
+  const spacing = LAYOUT.TASK_SPACING;
   const topBorderY = 0;
   const firstTaskY = topBorderY + spacing; // Start first task after top border + spacing
 
@@ -30,8 +32,8 @@ const TaskList = ({ width = 128.5 }: TaskListProps) => {
         y1={topBorderY}
         x2={width}
         y2={topBorderY}
-        stroke="#d1d5db"
-        strokeWidth="0.3"
+        stroke={COLORS.DIVIDER}
+        strokeWidth={STROKE_WIDTHS.PRIMARY}
       />
       
       {/* Task items */}
@@ -49,8 +51,8 @@ const TaskList = ({ width = 128.5 }: TaskListProps) => {
               y1={lineY}
               x2={taskLineEndX}
               y2={lineY}
-              stroke="#d1d5db"
-              strokeWidth="0.3"
+              stroke={COLORS.DIVIDER}
+              strokeWidth={STROKE_WIDTHS.PRIMARY}
             />
             
             {/* Checkbox - positioned between lines */}
@@ -59,9 +61,9 @@ const TaskList = ({ width = 128.5 }: TaskListProps) => {
               y={checkboxY}
               width={checkboxSize}
               height={checkboxSize}
-              stroke="black"
-              strokeWidth="0.3"
-              fill="white"
+              stroke={COLORS.PRIMARY}
+              strokeWidth={STROKE_WIDTHS.PRIMARY}
+              fill={COLORS.BACKGROUND}
             />
           </g>
         );
