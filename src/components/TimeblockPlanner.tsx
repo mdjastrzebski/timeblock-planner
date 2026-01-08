@@ -94,7 +94,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
                 x={timeColumnWidth / 2}
                 y={y + textYOffset}
                 fontSize="2.9"
-                fontFamily="sans-serif"
+                fontFamily="Inter, sans-serif"
                 fontWeight="500"
                 fill="black"
                 dominantBaseline="middle"

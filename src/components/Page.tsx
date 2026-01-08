@@ -42,7 +42,7 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
         y="12"
         textAnchor="middle"
         fontSize="3.7"
-        fontFamily="monospace"
+        fontFamily="Inter, sans-serif"
         fill="#6b7280"
         className="tracking-wider"
       >
