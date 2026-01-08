@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --noEmit",
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate": "bun run lint && bun run format:check",
-    "validate:fix": "bun run lint --fix && bun run format"
+    "validate": "bun run format:check && bun run typecheck && bun run lint",
+    "validate:fix": "bun run lint --fix && bun run format && bun run typecheck"
   },
   "dependencies": {
     "react": "^19.2.0",
