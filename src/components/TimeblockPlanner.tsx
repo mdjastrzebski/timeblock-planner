@@ -23,7 +23,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
   const timeSlots = generateTimeSlots();
   
   // Column measurements
-  const timeColumnWidth = 15.8; // 60px ≈ 15.8mm
+  const timeColumnWidth = 10; // Even narrower time column
   const remainingWidth = width - timeColumnWidth;
   const columnWidth = remainingWidth / 4; // 4 columns for timeblocks
   
@@ -34,10 +34,10 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
   const column5X = timeColumnWidth + columnWidth * 3;
   
   const rowHeight = 5; // 5mm per row
-  const totalHeight = timeSlots.length * rowHeight;
   
   // Text positioning - centered vertically in 5mm row
-  const textYOffset = 3.5; // y position for text (centered in 5mm row)
+  // Adjust slightly lower to account for font baseline
+  const textYOffset = rowHeight / 2 + 0.3; // Slightly lower for better centering
 
   return (
     <g>
@@ -79,12 +79,14 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
             {/* Time label */}
             {slot.time && (
               <text
-                x="12"
+                x={timeColumnWidth / 2}
                 y={y + textYOffset}
                 fontSize="2.9"
                 fontFamily="sans-serif"
                 fontWeight="500"
                 fill="black"
+                dominantBaseline="middle"
+                textAnchor="middle"
               >
                 {slot.time}
               </text>

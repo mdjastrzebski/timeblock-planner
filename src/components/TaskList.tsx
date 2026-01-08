@@ -18,11 +18,9 @@ const TaskList = ({ width = 128.5 }: TaskListProps) => {
   const checkboxX = 0;
   const taskLineStartX = 5; // Start line after checkbox (3mm + 2mm gap)
   const taskLineEndX = width;
-  const spacing = 4.5; // 4.5mm between tasks
+  const spacing = 10; // 10mm between tasks
   const topBorderY = 0;
   const firstTaskY = topBorderY + spacing; // Start first task after top border + spacing
-  
-  const totalHeight = firstTaskY + (tasks.length * spacing);
 
   return (
     <g>
@@ -38,12 +36,24 @@ const TaskList = ({ width = 128.5 }: TaskListProps) => {
       
       {/* Task items */}
       {tasks.map((taskNum, index) => {
-        const y = firstTaskY + (index * spacing);
-        const checkboxY = y - (checkboxSize / 2); // Center checkbox vertically on line
+        const lineY = firstTaskY + (index * spacing);
+        // Position checkbox between lines: centered in the gap between previous line and current line
+        // Move checkbox up by one spacing unit to position it correctly
+        const checkboxY = lineY - (spacing / 2) - (checkboxSize / 2);
         
         return (
           <g key={taskNum}>
-            {/* Checkbox */}
+            {/* Task line */}
+            <line
+              x1={taskLineStartX}
+              y1={lineY}
+              x2={taskLineEndX}
+              y2={lineY}
+              stroke="#d1d5db"
+              strokeWidth="0.3"
+            />
+            
+            {/* Checkbox - positioned between lines */}
             <rect
               x={checkboxX}
               y={checkboxY}
@@ -52,16 +62,6 @@ const TaskList = ({ width = 128.5 }: TaskListProps) => {
               stroke="black"
               strokeWidth="0.3"
               fill="white"
-            />
-            
-            {/* Task line */}
-            <line
-              x1={taskLineStartX}
-              y1={y}
-              x2={taskLineEndX}
-              y2={y}
-              stroke="#d1d5db"
-              strokeWidth="0.3"
             />
           </g>
         );

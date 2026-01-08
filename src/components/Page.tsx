@@ -19,7 +19,7 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
   // Calculate content area dimensions
   // Left side (TimeblockPlanner): x from 10mm to ~148.5mm (half of 297mm)
   // Right side (TaskList): x from ~148.5mm to 287mm (297mm - 10mm margin)
-  const contentStartY = 16; // 8mm margin + ~8mm for date height
+  const contentStartY = 26; // Date at y=12, spacing of ~1.4cm (14mm) to content below
   const leftContentX = 10;
   const leftContentWidth = isA4 ? 128.5 : 129.7; // Half width minus margins
   const rightContentX = isA4 ? 148.5 : 149.7;
