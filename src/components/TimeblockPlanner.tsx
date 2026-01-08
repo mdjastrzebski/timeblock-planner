@@ -1,13 +1,18 @@
 import './TimeblockPlanner.css';
 
-const TimeblockPlanner = () => {
-  // Generate time slots from 8:00 to 18:30 (half-hour intervals, 22 rows total)
+interface TimeblockPlannerProps {
+  hourFrom: number;
+  hourTo: number;
+}
+
+const TimeblockPlanner = ({ hourFrom, hourTo }: TimeblockPlannerProps) => {
+  // Generate time slots from hourFrom to hourTo (full hours with half-hour rows)
   const generateTimeSlots = () => {
     const slots = [];
-    for (let hour = 8; hour <= 18; hour++) {
-      slots.push(`${hour.toString().padStart(2, '0')}:00`);
-      if (hour <= 18) {
-        slots.push(`${hour.toString().padStart(2, '0')}:30`);
+    for (let hour = hourFrom; hour <= hourTo; hour++) {
+      slots.push({ time: `${hour.toString().padStart(2, '0')}:00`, isFullHour: true });
+      if (hour <= hourTo) {
+        slots.push({ time: null, isFullHour: false });
       }
     }
     return slots;
@@ -17,28 +22,23 @@ const TimeblockPlanner = () => {
 
   return (
     <div className="timeblock-planner">
+      <div className="planner-date-header">
+        <div className="date-line">__ / __ / 20__</div>
+      </div>
       <div className="planner-layout">
         <div className="planner-left">
           <table className="timeblock-table">
-            <thead>
-              <tr>
-                <th className="hour-column"></th>
-                <th className="timeblock-column">Col 1</th>
-                <th className="timeblock-column">Col 2</th>
-                <th className="timeblock-column">Col 3</th>
-                <th className="timeblock-column">Col 4</th>
-              </tr>
-            </thead>
             <tbody>
-              {timeSlots.map((time) => {
-                const isFullHour = time.endsWith(':00');
-                const rowClass = isFullHour
+              {timeSlots.map((slot, index) => {
+                const isLast = index === timeSlots.length - 1;
+                const rowClass = slot.isFullHour
                   ? 'timeblock-row timeblock-row-full-hour'
                   : 'timeblock-row timeblock-row-half-hour';
+                const finalClass = isLast ? `${rowClass} timeblock-row-final` : rowClass;
                 
                 return (
-                  <tr key={time} className={rowClass}>
-                    <td className="hour-column">{time}</td>
+                  <tr key={index} className={finalClass}>
+                    <td className="hour-column">{slot.time || ''}</td>
                     <td className="timeblock-column"></td>
                     <td className="timeblock-column"></td>
                     <td className="timeblock-column"></td>
