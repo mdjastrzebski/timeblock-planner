@@ -47,9 +47,9 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
         y={dateY}
         textAnchor="middle"
         fontSize={FONTS.SIZE_DATE}
-        fontFamily={FONTS.FAMILY}
+        fontWeight={FONTS.WEIGHT_MEDIUM}
         fill={COLORS.TEXT_SECONDARY}
-        className="tracking-wider"
+        style={FONTS.DATE_TEXT_STYLE}
       >
         _ _ / _ _ / 20 _ _
       </text>

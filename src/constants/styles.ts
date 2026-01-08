@@ -4,6 +4,7 @@ export const COLORS = {
   SECONDARY: "#9ca3af", // Half-hour lines
   TEXT_SECONDARY: "#6b7280", // Date text
   DIVIDER: "#d1d5db", // Dividers, task lines
+  VERTICAL_DIVIDER: "#374151", // Vertical dividers in timeblock planner
   BACKGROUND: "white",
 } as const;
 
@@ -19,6 +20,11 @@ export const FONTS = {
   SIZE_TIME_LABEL: "2.9",
   SIZE_DATE: "3.7",
   WEIGHT_MEDIUM: "500",
+  DATE_TEXT_STYLE: {
+    fontFamily: '"Inter", sans-serif',
+    fontVariant: 'normal' as const,
+    fontFeatureSettings: 'normal' as const,
+  },
 } as const;
 
 // Dash pattern constants
@@ -28,10 +34,10 @@ export const DASH_PATTERNS = {
 
 // Layout constants
 export const LAYOUT = {
-  ROW_HEIGHT: 5, // 5mm per row
+  ROW_HEIGHT: 6, // 6mm per row
   TASK_SPACING: 10, // 10mm between tasks
   CHECKBOX_SIZE: 3, // 3mm x 3mm
-  TIME_COLUMN_WIDTH: 10, // Time column width in mm
+  TIME_COLUMN_WIDTH: 6, // Time column width in mm
   DATE_Y_POSITION: 12, // Date field Y position
   CONTENT_START_Y: 26, // Content area start Y position
   MARGIN_TOP: 10, // Top margin in mm

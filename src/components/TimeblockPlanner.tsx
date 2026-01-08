@@ -12,7 +12,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
     const slots = [];
     for (let hour = hourFrom; hour <= hourTo; hour++) {
       slots.push({
-        time: `${hour.toString().padStart(2, "0")}:00`,
+        time: hour.toString().padStart(2, "0"),
         isFullHour: true,
       });
       if (hour <= hourTo) {
@@ -50,7 +50,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
         y1={0}
         x2={width}
         y2={totalHeight}
-        stroke={COLORS.DIVIDER}
+        stroke={COLORS.VERTICAL_DIVIDER}
         strokeWidth={STROKE_WIDTHS.SECONDARY}
         strokeDasharray={DASH_PATTERNS.DOTTED}
       />
@@ -112,7 +112,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               y1={y}
               x2={column2X}
               y2={y + rowHeight}
-              stroke={COLORS.DIVIDER}
+              stroke={COLORS.VERTICAL_DIVIDER}
               strokeWidth={STROKE_WIDTHS.SECONDARY}
               strokeDasharray={DASH_PATTERNS.DOTTED}
             />
@@ -121,7 +121,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               y1={y}
               x2={column3X}
               y2={y + rowHeight}
-              stroke={COLORS.DIVIDER}
+              stroke={COLORS.VERTICAL_DIVIDER}
               strokeWidth={STROKE_WIDTHS.SECONDARY}
               strokeDasharray={DASH_PATTERNS.DOTTED}
             />
@@ -130,7 +130,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               y1={y}
               x2={column4X}
               y2={y + rowHeight}
-              stroke={COLORS.DIVIDER}
+              stroke={COLORS.VERTICAL_DIVIDER}
               strokeWidth={STROKE_WIDTHS.SECONDARY}
               strokeDasharray={DASH_PATTERNS.DOTTED}
             />
@@ -139,7 +139,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               y1={y}
               x2={column5X}
               y2={y + rowHeight}
-              stroke={COLORS.DIVIDER}
+              stroke={COLORS.VERTICAL_DIVIDER}
               strokeWidth={STROKE_WIDTHS.SECONDARY}
               strokeDasharray={DASH_PATTERNS.DOTTED}
             />
