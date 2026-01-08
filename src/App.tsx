@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <div style={{ padding: '20px', textAlign: 'center', display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div className="controls-container" style={{ padding: '20px', textAlign: 'center', display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <label htmlFor="hourFrom" style={{ fontWeight: '500' }}>Hour from:</label>
           <input

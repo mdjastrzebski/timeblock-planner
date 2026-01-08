@@ -15,9 +15,9 @@
     background: white;
   }
 
-  /* Hide print button when printing */
-  button {
-    display: none;
+  /* Hide controls when printing */
+  .controls-container {
+    display: none !important;
   }
 
   .page {
@@ -26,16 +26,19 @@
     margin: 0;
     padding: 0;
     page-break-after: always;
+    page-break-inside: avoid;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .page-date-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10mm 10mm 5mm 10mm;
+    padding: 8mm 10mm 4mm 10mm;
     box-sizing: border-box;
+    flex-shrink: 0;
   }
 
   .date-line {
@@ -53,24 +56,29 @@
     width: 100%;
     flex: 1;
     overflow: hidden;
+    min-height: 0;
   }
 
   .page-left {
     width: 50%;
-    padding: 10mm;
-    padding-bottom: 10mm;
+    padding: 8mm;
+    padding-bottom: 8mm;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
   }
 
   .page-right {
     width: 50%;
-    padding: 10mm;
-    padding-bottom: 10mm;
+    padding: 8mm;
+    padding-bottom: 8mm;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
   }
 
   .tasks-container {
@@ -79,6 +87,8 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    min-height: 0;
   }
 
   .timeblock-table {
@@ -98,6 +108,8 @@
     flex-direction: column;
     gap: 8mm;
     flex: 1;
+    overflow: hidden;
+    min-height: 0;
   }
 
   .task-item {
@@ -128,6 +140,7 @@
     width: 100%;
     border-collapse: collapse;
     font-size: 11px;
+    table-layout: fixed;
   }
 
   .timeblock-table thead th {
