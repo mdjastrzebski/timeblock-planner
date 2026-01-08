@@ -174,24 +174,27 @@
   }
 
   .timeblock-row {
-    height: 25px;
+    height: 5mm;
   }
 
   .timeblock-row-full-hour {
-    border-top: 2px solid #000;
+    border-top: 1px solid #000;
   }
 
   .timeblock-row-half-hour {
-    border-top: 1px dotted #666;
+    border-top: 1px dotted #aaa;
   }
 
   .timeblock-row-final {
-    border-bottom: 2px solid #000;
+    border-bottom: 1px solid #000;
   }
 
   .timeblock-table td {
-    padding: 4px 8px;
+    padding: 0 8px;
     border-right: 1px solid #ccc;
+    vertical-align: middle;
+    height: 5mm;
+    line-height: 5mm;
   }
 
   .timeblock-table td:last-child {
