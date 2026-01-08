@@ -20,6 +20,17 @@ const TimeblockPlanner = ({ hourFrom, hourTo }: TimeblockPlannerProps) => {
 
   const timeSlots = generateTimeSlots();
 
+  // Generate task list items
+  const generateTasks = () => {
+    const tasks = [];
+    for (let i = 1; i <= 12; i++) {
+      tasks.push(i);
+    }
+    return tasks;
+  };
+
+  const tasks = generateTasks();
+
   return (
     <div className="timeblock-planner">
       <div className="planner-date-header">
@@ -49,7 +60,18 @@ const TimeblockPlanner = ({ hourFrom, hourTo }: TimeblockPlannerProps) => {
             </tbody>
           </table>
         </div>
-        <div className="planner-right"></div>
+        <div className="planner-right">
+          <div className="tasks-container">
+            <div className="tasks-list">
+              {tasks.map((taskNum) => (
+                <div key={taskNum} className="task-item">
+                  <div className="task-checkbox"></div>
+                  <div className="task-line"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
