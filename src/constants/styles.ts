@@ -34,27 +34,32 @@ export const LAYOUT = {
   TIME_COLUMN_WIDTH: 10, // Time column width in mm
   DATE_Y_POSITION: 12, // Date field Y position
   CONTENT_START_Y: 26, // Content area start Y position
+  MARGIN_TOP: 10, // Top margin in mm
+  MARGIN_BOTTOM: 10, // Bottom margin in mm
   MARGIN_LEFT: 10, // Left margin in mm
+  MARGIN_RIGHT: 10, // Right margin in mm
 } as const;
 
 // Paper size constants
+// All dimensions stored in mm as source of truth
 export const PAPER_SIZES = {
   A4: {
-    width: "297mm",
-    height: "210mm",
-    viewBox: "0 0 297 210",
-    dateX: 148.5,
-    leftContentWidth: 128.5,
-    rightContentX: 148.5,
-    rightContentWidth: 128.5,
+    widthMm: 297,
+    heightMm: 210,
   },
   Letter: {
-    width: "11in",
-    height: "8.5in",
-    viewBox: "0 0 279.4 215.9",
-    dateX: 139.7,
-    leftContentWidth: 129.7,
-    rightContentX: 149.7,
-    rightContentWidth: 129.7,
+    widthMm: 279.4, // 11in = 279.4mm
+    heightMm: 215.9, // 8.5in = 215.9mm
   },
 } as const;
+
+// Helper function to get width/height strings with units
+export const getPaperDimensions = (format: keyof typeof PAPER_SIZES) => {
+  const config = PAPER_SIZES[format];
+  
+  return {
+    width: `${config.widthMm}mm`,
+    height: `${config.heightMm}mm`,
+    viewBox: `0 0 ${config.widthMm} ${config.heightMm}`,
+  };
+};
