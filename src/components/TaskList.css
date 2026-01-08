@@ -10,7 +10,7 @@
 .tasks-list {
   display: flex;
   flex-direction: column;
-  gap: 6mm;
+  gap: 4.5mm;
   flex: 1;
 }
 
@@ -36,14 +36,14 @@
   margin: 0;
   background: white;
   position: relative;
-  top: -4mm;
+  top: -3.25mm;
 }
 
 .task-line-top {
   width: 100%;
   height: 0;
   border-bottom: 1px solid #ccc;
-  margin-bottom: 6mm;
+  margin-bottom: 4.5mm;
   margin-top: -2mm;
 }
 
