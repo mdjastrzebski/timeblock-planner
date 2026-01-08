@@ -25,6 +25,7 @@ export const FONTS = {
     fontVariant: 'normal' as const,
     fontFeatureSettings: 'normal' as const,
   },
+  DATE_FORMAT_PLACEHOLDER: "_ _ / _ _ / 20 _ _",
 } as const;
 
 // Dash pattern constants
@@ -44,6 +45,12 @@ export const LAYOUT = {
   MARGIN_BOTTOM: 10, // Bottom margin in mm
   MARGIN_LEFT: 10, // Left margin in mm
   MARGIN_RIGHT: 10, // Right margin in mm
+  DEFAULT_WIDTH: 128.5, // Default width for components in mm
+  CENTER_GAP: 10, // Gap between left and right columns in mm
+  DEFAULT_TASK_COUNT: 14, // Default number of task items
+  DATE_OFFSET: 2, // Offset for date field from top margin in mm
+  CONTENT_OFFSET: 16, // Offset for content area from top margin in mm
+  COLUMNS: 4, // Number of columns in timeblock planner
 } as const;
 
 // Paper size constants

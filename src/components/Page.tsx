@@ -1,8 +1,7 @@
 import TimeblockPlanner from "./TimeblockPlanner";
 import TaskList from "./TaskList";
 import { FONTS, COLORS, LAYOUT, PAPER_SIZES, getPaperDimensions } from "../constants/styles";
-
-type PageFormat = "A4" | "Letter";
+import type { PageFormat } from "../types";
 
 interface PageProps {
   hourFrom: number;
@@ -17,7 +16,7 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
   
   // Calculate horizontal dimensions based on margins
   const totalContentWidth = paperConfig.widthMm - LAYOUT.MARGIN_LEFT - LAYOUT.MARGIN_RIGHT;
-  const centerGap = 10; // Gap between left and right columns
+  const centerGap = LAYOUT.CENTER_GAP;
   const columnWidth = (totalContentWidth - centerGap) / 2;
   
   const dateX = paperConfig.widthMm / 2; // Center of page
@@ -27,8 +26,8 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
   const rightContentWidth = columnWidth;
   
   // Calculate vertical dimensions based on margins
-  const dateY = LAYOUT.MARGIN_TOP + 2; // MARGIN_TOP + small offset for date
-  const contentStartY = LAYOUT.MARGIN_TOP + 16; // MARGIN_TOP + space for date field
+  const dateY = LAYOUT.MARGIN_TOP + LAYOUT.DATE_OFFSET;
+  const contentStartY = LAYOUT.MARGIN_TOP + LAYOUT.CONTENT_OFFSET;
   
   return (
     <div className="svg-container m-0 mx-auto print:m-0 print:p-0">
@@ -40,6 +39,8 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
         className="bg-white print:[page-break-after:always] print:[page-break-inside:avoid] print:overflow-hidden"
         data-page-format={pageFormat}
         preserveAspectRatio="xMidYMid meet"
+        role="img"
+        aria-label={`Timeblock planner page in ${pageFormat} format`}
       >
       {/* Date field - centered horizontally */}
       <text
@@ -51,7 +52,7 @@ const Page = ({ hourFrom, hourTo, pageFormat }: PageProps) => {
         fill={COLORS.TEXT_SECONDARY}
         style={FONTS.DATE_TEXT_STYLE}
       >
-        _ _ / _ _ / 20 _ _
+        {FONTS.DATE_FORMAT_PLACEHOLDER}
       </text>
       
       {/* Left side - TimeblockPlanner */}

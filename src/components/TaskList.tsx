@@ -1,20 +1,19 @@
+import { useMemo } from "react";
 import { COLORS, STROKE_WIDTHS, LAYOUT } from "../constants/styles";
 
 interface TaskListProps {
   width?: number;
 }
 
-const TaskList = ({ width = 128.5 }: TaskListProps) => {
+const TaskList = ({ width = LAYOUT.DEFAULT_WIDTH }: TaskListProps) => {
   // Generate task list items
-  const generateTasks = () => {
-    const tasks = [];
-    for (let i = 1; i <= 14; i++) {
-      tasks.push(i);
+  const tasks = useMemo(() => {
+    const taskArray = [];
+    for (let i = 1; i <= LAYOUT.DEFAULT_TASK_COUNT; i++) {
+      taskArray.push(i);
     }
-    return tasks;
-  };
-
-  const tasks = generateTasks();
+    return taskArray;
+  }, []);
   
   const checkboxSize = LAYOUT.CHECKBOX_SIZE;
   const checkboxX = 0;

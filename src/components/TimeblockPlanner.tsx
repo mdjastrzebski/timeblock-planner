@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { COLORS, STROKE_WIDTHS, FONTS, DASH_PATTERNS, LAYOUT } from "../constants/styles";
 
 interface TimeblockPlannerProps {
@@ -6,28 +7,27 @@ interface TimeblockPlannerProps {
   width?: number;
 }
 
-const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerProps) => {
+const TimeblockPlanner = ({ hourFrom, hourTo, width = LAYOUT.DEFAULT_WIDTH }: TimeblockPlannerProps) => {
   // Generate time slots from hourFrom to hourTo (full hours with half-hour rows)
-  const generateTimeSlots = () => {
+  const timeSlots = useMemo(() => {
     const slots = [];
     for (let hour = hourFrom; hour <= hourTo; hour++) {
       slots.push({
         time: hour.toString().padStart(2, "0"),
         isFullHour: true,
       });
-      if (hour <= hourTo) {
+      // Add half-hour slot after each hour except the last one
+      if (hour < hourTo) {
         slots.push({ time: null, isFullHour: false });
       }
     }
     return slots;
-  };
-
-  const timeSlots = generateTimeSlots();
+  }, [hourFrom, hourTo]);
   
   // Column measurements
   const timeColumnWidth = LAYOUT.TIME_COLUMN_WIDTH;
   const remainingWidth = width - timeColumnWidth;
-  const columnWidth = remainingWidth / 4; // 4 columns for timeblocks
+  const columnWidth = remainingWidth / LAYOUT.COLUMNS;
   
   // Calculate column X positions
   const column2X = timeColumnWidth;
@@ -107,42 +107,18 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
             )}
             
             {/* Vertical dividers between columns */}
-            <line
-              x1={column2X}
-              y1={y}
-              x2={column2X}
-              y2={y + rowHeight}
-              stroke={COLORS.VERTICAL_DIVIDER}
-              strokeWidth={STROKE_WIDTHS.SECONDARY}
-              strokeDasharray={DASH_PATTERNS.DOTTED}
-            />
-            <line
-              x1={column3X}
-              y1={y}
-              x2={column3X}
-              y2={y + rowHeight}
-              stroke={COLORS.VERTICAL_DIVIDER}
-              strokeWidth={STROKE_WIDTHS.SECONDARY}
-              strokeDasharray={DASH_PATTERNS.DOTTED}
-            />
-            <line
-              x1={column4X}
-              y1={y}
-              x2={column4X}
-              y2={y + rowHeight}
-              stroke={COLORS.VERTICAL_DIVIDER}
-              strokeWidth={STROKE_WIDTHS.SECONDARY}
-              strokeDasharray={DASH_PATTERNS.DOTTED}
-            />
-            <line
-              x1={column5X}
-              y1={y}
-              x2={column5X}
-              y2={y + rowHeight}
-              stroke={COLORS.VERTICAL_DIVIDER}
-              strokeWidth={STROKE_WIDTHS.SECONDARY}
-              strokeDasharray={DASH_PATTERNS.DOTTED}
-            />
+            {[column2X, column3X, column4X, column5X].map((x, dividerIndex) => (
+              <line
+                key={dividerIndex}
+                x1={x}
+                y1={y}
+                x2={x}
+                y2={y + rowHeight}
+                stroke={COLORS.VERTICAL_DIVIDER}
+                strokeWidth={STROKE_WIDTHS.SECONDARY}
+                strokeDasharray={DASH_PATTERNS.DOTTED}
+              />
+            ))}
           </g>
         );
       })}
