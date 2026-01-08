@@ -1,5 +1,10 @@
 @page {
-  size: A4;
+  size: A4 landscape;
+  margin: 0;
+}
+
+@page :first {
+  size: A4 landscape;
   margin: 0;
 }
 
@@ -15,73 +20,10 @@
     background: white;
   }
 
-  /* Hide print button when printing */
-  button {
-    display: none;
-  }
-
-  .timeblock-planner {
-    width: 210mm;
-    height: 297mm;
-    margin: 0;
-    padding: 0;
-    page-break-after: always;
-  }
-
-  .planner-layout {
-    width: 100%;
-    height: 100%;
-  }
-
-  .planner-left {
-    width: 50%;
-    padding: 10mm;
-  }
-
-  .planner-right {
-    width: 50%;
-  }
-
-  .timeblock-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 11px;
-  }
-
-  .timeblock-table thead th {
-    text-align: left;
-    padding: 4px 8px;
-    font-weight: bold;
-    border-bottom: 2px solid #000;
-  }
-
-  .timeblock-row {
-    height: 25px;
-  }
-
-  .timeblock-row-full-hour {
-    border-top: 2px solid #000;
-  }
-
-  .timeblock-row-half-hour {
-    border-top: 1px dotted #666;
-  }
-
-  .timeblock-table td {
-    padding: 4px 8px;
-    border-right: 1px solid #ccc;
-  }
-
-  .timeblock-table td:last-child {
-    border-right: none;
-  }
-
-  .hour-column {
-    width: 60px;
-    font-weight: 500;
-  }
-
-  .timeblock-column {
-    width: auto;
+  /* Ensure SVG prints at exact size */
+  svg {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    overflow: visible;
   }
 }

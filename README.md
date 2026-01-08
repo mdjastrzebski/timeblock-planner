@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# Timeblock Planner Print
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist, customizable daily timeblock planner designed specifically for physical printing. Built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Customizable Time Range:** Set your day's start and end hours (e.g., 7:00 AM to 8:00 PM).
+- **Format Support:** Supports both **A4** and **US Letter** paper sizes in landscape orientation.
+- **Print Optimized:** Uses dedicated print CSS to ensure the layout is pixel-perfect on paper, automatically hiding UI controls during printing.
+- **Clean Design:** Minimalist aesthetic focused on functionality and clarity.
+- **Privacy First:** Runs entirely in your browser; no data is sent to any server.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework:** [React 19](https://react.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Package Manager:** [Bun](https://bun.sh/) (compatible with npm/yarn/pnpm)
 
-## Expanding the ESLint configuration
+## 📦 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js or Bun installed on your machine.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone the repository:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+   ```bash
+   git clone https://github.com/yourusername/timeblock-planner-print.git
+   cd timeblock-planner-print
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. Install dependencies:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```bash
+   bun install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   bun dev
+   ```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## 📖 Usage
+
+1. **Configure:** Use the controls at the top of the page to set your desired start hour, end hour, and page format (A4 or Letter).
+2. **Preview:** The planner preview updates instantly as you change settings.
+3. **Print:** Click the "Print Planner" button. This will trigger the browser's native print dialog.
+4. **Settings:** Ensure "Background Graphics" is enabled in your print settings if lines or colors are missing.
+
+## 🏗️ Development
+
+- `bun dev`: Start development server.
+- `bun run build`: Build for production.
+- `bun run lint`: Run ESLint.
+- `bun run preview`: Preview the production build.
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
