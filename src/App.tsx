@@ -43,20 +43,9 @@ function App() {
 
   return (
     <>
-      <div
-        className="controls-container"
-        style={{
-          padding: "20px",
-          textAlign: "center",
-          display: "flex",
-          gap: "20px",
-          alignItems: "center",
-          justifyContent: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <label htmlFor="hourFrom" style={{ fontWeight: "500" }}>
+      <div className="controls-container p-5 text-center flex gap-5 items-center justify-center flex-wrap print:hidden">
+        <div className="flex gap-[10px] items-center">
+          <label htmlFor="hourFrom" className="font-medium">
             Hour from:
           </label>
           <input
@@ -68,17 +57,11 @@ function App() {
             onChange={(e) =>
               handleHourFromChange(parseInt(e.target.value) || 0)
             }
-            style={{
-              padding: "5px 10px",
-              fontSize: "16px",
-              width: "60px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-            }}
+            className="px-2.5 py-1.5 text-base w-[60px] border border-gray-300 rounded"
           />
         </div>
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <label htmlFor="hourTo" style={{ fontWeight: "500" }}>
+        <div className="flex gap-[10px] items-center">
+          <label htmlFor="hourTo" className="font-medium">
             Hour to:
           </label>
           <input
@@ -88,30 +71,18 @@ function App() {
             max="23"
             value={hourTo}
             onChange={(e) => handleHourToChange(parseInt(e.target.value) || 0)}
-            style={{
-              padding: "5px 10px",
-              fontSize: "16px",
-              width: "60px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-            }}
+            className="px-2.5 py-1.5 text-base w-[60px] border border-gray-300 rounded"
           />
         </div>
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <label htmlFor="pageFormat" style={{ fontWeight: "500" }}>
+        <div className="flex gap-[10px] items-center">
+          <label htmlFor="pageFormat" className="font-medium">
             Page format:
           </label>
           <select
             id="pageFormat"
             value={pageFormat}
             onChange={(e) => setPageFormat(e.target.value as PageFormat)}
-            style={{
-              padding: "5px 10px",
-              fontSize: "16px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              backgroundColor: "#fff",
-            }}
+            className="px-2.5 py-1.5 text-base border border-gray-300 rounded bg-white"
           >
             <option value="A4">A4</option>
             <option value="Letter">Letter</option>
@@ -119,14 +90,7 @@ function App() {
         </div>
         <button
           onClick={handlePrint}
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            cursor: "pointer",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            backgroundColor: "#fff",
-          }}
+          className="px-5 py-2.5 text-base cursor-pointer border border-gray-300 rounded bg-white hover:bg-gray-100 focus:outline-2 focus:outline-blue-500 focus:outline-offset-2"
         >
           Print Planner
         </button>
