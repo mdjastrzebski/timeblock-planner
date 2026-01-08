@@ -34,6 +34,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
   const column5X = timeColumnWidth + columnWidth * 3;
   
   const rowHeight = 5; // 5mm per row
+  const totalHeight = timeSlots.length * rowHeight;
   
   // Text positioning - centered vertically in 5mm row
   // Adjust slightly lower to account for font baseline
@@ -41,6 +42,17 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
 
   return (
     <g>
+      {/* Final vertical line on the right edge - spans full height */}
+      <line
+        x1={width}
+        y1={0}
+        x2={width}
+        y2={totalHeight}
+        stroke="#d1d5db"
+        strokeWidth="0.2"
+        strokeDasharray="0.5,0.5"
+      />
+      
       {/* Draw rows and borders */}
       {timeSlots.map((slot, index) => {
         const y = index * rowHeight;
@@ -48,8 +60,8 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
         
         // Draw horizontal line (top border)
         const lineColor = slot.isFullHour ? "black" : "#9ca3af";
-        const lineWidth = slot.isFullHour ? "0.5" : "0.3";
-        const dashArray = slot.isFullHour ? undefined : "2,2";
+        const lineWidth = slot.isFullHour ? "0.3" : "0.2";
+        const dashArray = slot.isFullHour ? undefined : "0.5,0.5"; // Very dense dotted pattern for half-hour lines
         
         return (
           <g key={index}>
@@ -72,7 +84,7 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
                 x2={width}
                 y2={y + rowHeight}
                 stroke="black"
-                strokeWidth="0.5"
+                strokeWidth="0.3"
               />
             )}
             
@@ -99,7 +111,8 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               x2={column2X}
               y2={y + rowHeight}
               stroke="#d1d5db"
-              strokeWidth="0.3"
+              strokeWidth="0.2"
+              strokeDasharray="0.5,0.5"
             />
             <line
               x1={column3X}
@@ -107,7 +120,8 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               x2={column3X}
               y2={y + rowHeight}
               stroke="#d1d5db"
-              strokeWidth="0.3"
+              strokeWidth="0.2"
+              strokeDasharray="0.5,0.5"
             />
             <line
               x1={column4X}
@@ -115,7 +129,8 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               x2={column4X}
               y2={y + rowHeight}
               stroke="#d1d5db"
-              strokeWidth="0.3"
+              strokeWidth="0.2"
+              strokeDasharray="0.5,0.5"
             />
             <line
               x1={column5X}
@@ -123,7 +138,8 @@ const TimeblockPlanner = ({ hourFrom, hourTo, width = 128.5 }: TimeblockPlannerP
               x2={column5X}
               y2={y + rowHeight}
               stroke="#d1d5db"
-              strokeWidth="0.3"
+              strokeWidth="0.2"
+              strokeDasharray="0.5,0.5"
             />
           </g>
         );
