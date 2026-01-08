@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TimeblockPlanner from './components/TimeblockPlanner'
+import Page from './components/Page'
 
 function App() {
   const [hourFrom, setHourFrom] = useState(8)
@@ -56,7 +56,7 @@ function App() {
           Print Planner
         </button>
       </div>
-      <TimeblockPlanner hourFrom={hourFrom} hourTo={hourTo} />
+      <Page hourFrom={hourFrom} hourTo={hourTo} />
     </>
   )
 }

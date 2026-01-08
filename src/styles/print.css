@@ -20,7 +20,7 @@
     display: none;
   }
 
-  .timeblock-planner {
+  .page {
     width: 297mm;
     height: 210mm;
     margin: 0;
@@ -30,7 +30,7 @@
     flex-direction: column;
   }
 
-  .planner-date-header {
+  .page-date-header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,13 +49,13 @@
     font-family: monospace;
   }
 
-  .planner-layout {
+  .page-layout {
     width: 100%;
     flex: 1;
     overflow: hidden;
   }
 
-  .planner-left {
+  .page-left {
     width: 50%;
     padding: 10mm;
     padding-bottom: 10mm;
@@ -64,7 +64,7 @@
     flex-direction: column;
   }
 
-  .planner-right {
+  .page-right {
     width: 50%;
     padding: 10mm;
     padding-bottom: 10mm;

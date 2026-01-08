@@ -1,0 +1,38 @@
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8mm;
+  flex: 1;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  min-height: 20px;
+}
+
+.task-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  flex-shrink: 0;
+  margin: 0;
+  background: white;
+  position: relative;
+  bottom: 4mm;
+}
+
+.task-line {
+  flex: 1;
+  height: 20px;
+  border-bottom: 1px solid #ccc;
+}
