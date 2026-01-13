@@ -60,7 +60,7 @@ function App() {
         taskCount={taskCount}
       />
       {duplexPrint && (
-        <div className="mt-4 print:mt-0">
+        <div className="hidden print:block">
           <Page
             hourFrom={hourFrom}
             hourTo={hourTo}
