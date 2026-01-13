@@ -6,10 +6,12 @@ interface ConfigPanelProps {
   hourTo: number;
   pageFormat: PageFormat;
   taskCount: number;
+  duplexPrint: boolean;
   onHourFromChange: (value: number) => void;
   onHourToChange: (value: number) => void;
   onPageFormatChange: (value: PageFormat) => void;
   onTaskCountChange: (value: number) => void;
+  onDuplexPrintChange: (value: boolean) => void;
   onPrint: () => void;
 }
 
@@ -18,10 +20,12 @@ const ConfigPanel = ({
   hourTo,
   pageFormat,
   taskCount,
+  duplexPrint,
   onHourFromChange,
   onHourToChange,
   onPageFormatChange,
   onTaskCountChange,
+  onDuplexPrintChange,
   onPrint,
 }: ConfigPanelProps) => {
   return (
@@ -183,6 +187,47 @@ const ConfigPanel = ({
                 <option value="A4">A4</option>
                 <option value="Letter">Letter</option>
               </select>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="hidden lg:block w-px bg-gray-200"></div>
+          <div className="lg:hidden w-full h-px bg-gray-200"></div>
+
+          {/* Two-Sided Print Section */}
+          <div>
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
+              Two-Sided
+            </h3>
+            <div className="flex items-center gap-3">
+              <svg
+                className="w-5 h-5 text-gray-400 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                />
+              </svg>
+              <label
+                htmlFor="duplexPrint"
+                className="text-sm font-medium text-gray-700 whitespace-nowrap"
+              >
+                Duplicate page:
+              </label>
+              <input
+                id="duplexPrint"
+                type="checkbox"
+                checked={duplexPrint}
+                onChange={(e) => onDuplexPrintChange(e.target.checked)}
+                aria-label="Enable two-sided printing by duplicating the page"
+                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+              />
             </div>
           </div>
 
