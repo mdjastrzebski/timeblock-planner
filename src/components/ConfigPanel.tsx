@@ -154,7 +154,7 @@ const ConfigPanel = ({
                     onPageFormatChange(value);
                   }
                 }}
-                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-base text-gray-900 dark:text-gray-100 transition-all duration-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 hover:border-gray-400 dark:hover:border-gray-500 min-w-[100px]"
+                className="select-chevron pl-3 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-base text-gray-900 dark:text-gray-100 transition-all duration-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 hover:border-gray-400 dark:hover:border-gray-500 min-w-[110px]"
               >
                 <option value="A4">A4</option>
                 <option value="Letter">Letter</option>
