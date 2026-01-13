@@ -3,6 +3,7 @@ import Page from "./components/Page";
 import ConfigPanel from "./components/ConfigPanel";
 import type { PageFormat } from "./types";
 import { usePrint } from "./hooks/usePrint";
+import { useTheme } from "./hooks/useTheme";
 
 function App() {
   const [hourFrom, setHourFrom] = useState(7);
@@ -12,6 +13,7 @@ function App() {
   const [duplexPrint, setDuplexPrint] = useState(false);
 
   const handlePrint = usePrint(pageFormat);
+  const { theme, setTheme } = useTheme();
 
   const handleHourFromChange = (value: number) => {
     const newValue = Math.max(0, Math.min(23, value));
@@ -42,11 +44,13 @@ function App() {
         pageFormat={pageFormat}
         taskCount={taskCount}
         duplexPrint={duplexPrint}
+        theme={theme}
         onHourFromChange={handleHourFromChange}
         onHourToChange={handleHourToChange}
         onPageFormatChange={setPageFormat}
         onTaskCountChange={handleTaskCountChange}
         onDuplexPrintChange={setDuplexPrint}
+        onThemeChange={setTheme}
         onPrint={handlePrint}
       />
       <Page

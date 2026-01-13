@@ -3,6 +3,8 @@
 @source "../src/**/*.{js,ts,jsx,tsx}";
 @source "../index.html";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -17,11 +19,21 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .dark {
+    color-scheme: dark;
+    color: #e5e7eb;
+    background-color: #1f2937;
+  }
+
   body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
     background-color: #f5f5f5;
+  }
+
+  .dark body {
+    background-color: #111827;
   }
 
   button {
@@ -36,8 +48,18 @@
     transition: background-color 0.25s;
   }
 
+  .dark button {
+    border-color: #4b5563;
+    background-color: #374151;
+    color: #e5e7eb;
+  }
+
   button:hover {
     background-color: #f0f0f0;
+  }
+
+  .dark button:hover {
+    background-color: #4b5563;
   }
 
   button:focus,
@@ -62,6 +84,10 @@
     height: auto;
     display: block;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .dark .svg-container svg {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
   }
 }
 
