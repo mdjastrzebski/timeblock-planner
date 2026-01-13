@@ -9,6 +9,7 @@ function App() {
   const [hourTo, setHourTo] = useState(20);
   const [pageFormat, setPageFormat] = useState<PageFormat>("A4");
   const [taskCount, setTaskCount] = useState(16);
+  const [duplexPrint, setDuplexPrint] = useState(false);
 
   const handlePrint = usePrint(pageFormat);
 
@@ -40,10 +41,12 @@ function App() {
         hourTo={hourTo}
         pageFormat={pageFormat}
         taskCount={taskCount}
+        duplexPrint={duplexPrint}
         onHourFromChange={handleHourFromChange}
         onHourToChange={handleHourToChange}
         onPageFormatChange={setPageFormat}
         onTaskCountChange={handleTaskCountChange}
+        onDuplexPrintChange={setDuplexPrint}
         onPrint={handlePrint}
       />
       <Page
@@ -52,6 +55,16 @@ function App() {
         pageFormat={pageFormat}
         taskCount={taskCount}
       />
+      {duplexPrint && (
+        <div className="mt-4 print:mt-0">
+          <Page
+            hourFrom={hourFrom}
+            hourTo={hourTo}
+            pageFormat={pageFormat}
+            taskCount={taskCount}
+          />
+        </div>
+      )}
     </>
   );
 }

@@ -51,4 +51,4 @@ The project is optimized for use with `bun`.
 ## Agent Guidelines
 
 1. Run `bun run prettier:fix` after you finish changing code.
-2. Summarize the changes made in `CURRENT-CHANGES.md` file. Use a format of a brief PR description.
+2. Summarize the changes made in `CURRENT-CHANGES.md` file. Use a format of a brief PR description. Make it very concise.
