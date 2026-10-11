@@ -14,10 +14,17 @@
     print-color-adjust: exact;
   }
 
+  /* Dark mode sets color-scheme: dark, which tints the page canvas in print */
+  :root {
+    color-scheme: light !important;
+  }
+
+  html,
   body {
     margin: 0;
     padding: 0;
-    background: white;
+    min-height: 0;
+    background: white !important;
   }
 
   /* Ensure SVG prints at exact size */
@@ -25,5 +32,6 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     overflow: visible;
+    box-shadow: none !important;
   }
 }

@@ -26,6 +26,11 @@ const TaskList = ({
   const spacing = LAYOUT.TASK_SPACING;
   const topBorderY = 0;
   const firstTaskY = topBorderY + spacing; // Start first task after top border + spacing
+  const pomodoroRadius = checkboxSize / 2;
+  const pomodoroStep = checkboxSize + LAYOUT.POMODORO_GAP;
+  // Right-align pomodoro circles with the end of the task line
+  const pomodoroStartX =
+    taskLineEndX - LAYOUT.POMODORO_COUNT * pomodoroStep + LAYOUT.POMODORO_GAP;
 
   return (
     <g>
@@ -68,6 +73,19 @@ const TaskList = ({
               strokeWidth={STROKE_WIDTHS.PRIMARY}
               fill={COLORS.BACKGROUND}
             />
+
+            {/* Pomodoro circles - right-aligned, centered like the checkbox */}
+            {Array.from({ length: LAYOUT.POMODORO_COUNT }, (_, i) => (
+              <circle
+                key={i}
+                cx={pomodoroStartX + i * pomodoroStep + pomodoroRadius}
+                cy={checkboxY + pomodoroRadius}
+                r={pomodoroRadius}
+                stroke={COLORS.SECONDARY}
+                strokeWidth={STROKE_WIDTHS.PRIMARY}
+                fill={COLORS.BACKGROUND}
+              />
+            ))}
           </g>
         );
       })}

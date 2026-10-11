@@ -38,6 +38,8 @@ export const LAYOUT = {
   ROW_HEIGHT: 6, // 6mm per row
   TASK_SPACING: 10, // 10mm between tasks
   CHECKBOX_SIZE: 3, // 3mm x 3mm
+  POMODORO_COUNT: 5, // Pomodoro circles per task
+  POMODORO_GAP: 1.5, // Gap between pomodoro circles in mm
   TIME_COLUMN_WIDTH: 6, // Time column width in mm
   DATE_Y_POSITION: 12, // Date field Y position
   CONTENT_START_Y: 26, // Content area start Y position

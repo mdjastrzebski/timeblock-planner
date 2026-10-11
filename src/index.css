@@ -108,8 +108,10 @@
     margin: 0;
   }
 
+  /* Fit each page to the printer's page box. Printer drivers often report
+     A4 as 595x842pt (209.9mm), so a fixed 210mm SVG spills onto a 2nd page. */
   .svg-container svg {
-    width: auto;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
   }
 }
